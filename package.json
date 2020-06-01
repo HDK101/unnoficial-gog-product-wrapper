@@ -1,0 +1,17 @@
+{
+  "name": "gogproductwrapper",
+  "version": "0.0.1",
+  "description": "An wrapper for GOG products",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "GOG",
+    "json",
+    "wrapper",
+    "games"
+  ],
+  "author": "EMKBRO",
+  "license": "MIT"
+}
