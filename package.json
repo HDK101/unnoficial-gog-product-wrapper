@@ -13,5 +13,8 @@
     "games"
   ],
   "author": "EMKBRO",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^7.2.0"
+  }
 }
