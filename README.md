@@ -1,0 +1,1 @@
+# unnoficial-gog-product-wrapper
