@@ -9,7 +9,7 @@
 ## Content
 1. How to install
 2. How to use
-3. Other methods
+3. Other GOGProduct class methods
 
 ## 1. How to install
 ```
@@ -18,8 +18,11 @@ npm install gog-product-wrapper
 
 ## 2. How to use
 ```javascript
+const { getProductById } = require("gog-product-wrapper")
+
 getProductById(/*ID String here*/).then(function (product) {
-    //product respective methods here...
+    //product is GOGProduct class
+    //GOGProduct respective methods here...
 });
 
 ```
@@ -42,9 +45,8 @@ getProductById("1441039322").then(function (product) {
 .getProductCard()
 .getPurchaseLink()
 
-
-//API Link for acessing the images
 .getImagesAPILink()
+//API Link for acessing the images
 
 //Returns Date object
 .getReleaseDate()
@@ -68,7 +70,7 @@ if advanced = true, it returns:
 
 ```
 
-## For Devs wanting to fiddle with the source code
+## Some steps to run the source code
 
 1. Install required dependencies
 
