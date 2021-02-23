@@ -1,6 +1,8 @@
 # Unnoficial GOG Product Wrapper
 ### An wrapper for GOG API for retrieving and managing products data
 
+### Warning! Changes to the official GOG API could make this library unusable!
+
 1. How to install
 2. How to use
 3. Other methods
