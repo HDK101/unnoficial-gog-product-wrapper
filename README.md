@@ -68,7 +68,7 @@ if advanced = true, it returns:
 
 ```
 
-## For devs wanting to fiddle with the source code
+## Some steps to run the source code
 
 1. Install required dependencies
 
