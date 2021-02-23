@@ -1,4 +1,4 @@
-const { getProductById } = require("./src/gogwrapper")
+const { getProductById } = require("./gogwrapper")
 
 /* getProductById("1207658787").then(function(product) { */
 getProductById("1441039322").then(function (product) {
