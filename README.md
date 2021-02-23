@@ -52,7 +52,7 @@ getTotalRatingsValue()
 
 ```
 
-#Dev use
+# For Devs
 
 1. Install required dependencies
 
