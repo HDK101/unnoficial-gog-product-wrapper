@@ -68,7 +68,7 @@ if advanced = true, it returns:
 
 ```
 
-## For Devs wanting to fiddle with the source code
+## For devs wanting to fiddle with the source code
 
 1. Install required dependencies
 
