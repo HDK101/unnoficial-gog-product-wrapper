@@ -56,9 +56,9 @@ describe("Functions of GOG Product", function () {
             console.table(prices);
         });
     });
-    it("#getTotalRatingsValue", function () {
-        return currentProduct.getTotalRatingsValue().then(function (ratingsValue) {
-            console.log("Rating: ", ratingsValue);
+    it("#getRatings", function () {
+        return currentProduct.getRatings().then(function (ratingsDictionary) {
+            console.table(ratingsDictionary);
         });
     });
 });
