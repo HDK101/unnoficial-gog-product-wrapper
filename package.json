@@ -1,5 +1,5 @@
 {
-  "name": "gog-product-wrapper",
+  "name": "ugog-product",
   "version": "0.0.1",
   "description": "An wrapper for GOG API for retrieving and managing products data",
   "main": "src/gogwrapper.js",
