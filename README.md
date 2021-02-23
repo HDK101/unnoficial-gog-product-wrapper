@@ -9,7 +9,7 @@
 ## Content
 1. How to install
 2. How to use
-3. Other methods
+3. Other GOGProduct class methods
 
 ## 1. How to install
 ```
@@ -19,7 +19,8 @@ npm install gog-product-wrapper
 ## 2. How to use
 ```javascript
 getProductById(/*ID String here*/).then(function (product) {
-    //product respective methods here...
+    //product is GOGProduct class
+    //GOGProduct respective methods here...
 });
 
 ```
