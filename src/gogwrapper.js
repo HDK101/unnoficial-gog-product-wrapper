@@ -39,6 +39,10 @@ let GOGProduct = class Product {
    */
   getAvailableSystems = () => this.productJson.content_system_compatibility
 
+  getImagesAPILink = () => {
+    return "https://images.gog-statics.com/"
+  }
+
   /**
    * @param {Boolean} advanced false by default
    * @returns {Dictionary} a dictionary with links to images
@@ -106,19 +110,51 @@ let GOGProduct = class Product {
     });
   };
 
-  /**
-   * Returns a promise with game ratings value(Between 0.0 stars and 5.0 stars)
-   *
-   * @returns {Promise} A promise with game ratings value
-   */
-  getTotalRatingsValue = () => {
+
+  getVerifiedRatingsValue = () => {
+    const id = this.productJson.id;
+    const urlReviewsVerified = `https://reviews.gog.com/v1/products/${id}
+        /averageRating?reviewer=verified_owner`
+    return new Promise(function (resolve, reject) {
+      getRawJSON(urlReviewsVerified).then(function (verifiedRatings) {
+        resolve(verifiedRatings.value);
+      });
+    });
+  }
+
+  getUnverifiedRatingsValue = () => {
     const id = this.productJson.id;
     const urlReviews = `https://reviews.gog.com/v1/products/${id}/averageRating`
     return new Promise(function (resolve, reject) {
-      getRawJSON(urlReviews).then(function (totalRatings) {
-        resolve(totalRatings.value);
+      getRawJSON(urlReviews).then(function (unverifiedRatings) {
+        resolve(unverifiedRatings.value);
       });
     });
+  }
+
+  /**
+   * Returns a promise with a dictionary containing game ratings(unverified and verified)
+   *
+   * @returns {Promise} A promise with game ratings dictionary
+   */
+  getRatings = () => {
+    var unverifiedRatings = 0.0
+    var verifiedRatings = 0.0
+
+    const ratingsDictionaryReturn = () => {
+      return new Promise(function (resolve, reject) {
+        resolve({
+          unverifiedRatings,
+          verifiedRatings
+        });
+      });
+    }
+
+    return this.getUnverifiedRatingsValue().then(function (ratings) {
+      unverifiedRatings = ratings
+    }).then(this.getVerifiedRatingsValue).then(function (ratings) {
+      verifiedRatings = ratings;
+    }).then(ratingsDictionaryReturn);
   }
 };
 
