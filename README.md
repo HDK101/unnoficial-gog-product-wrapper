@@ -42,9 +42,8 @@ getProductById("1441039322").then(function (product) {
 .getProductCard()
 .getPurchaseLink()
 
-
-//API Link for acessing the images
 .getImagesAPILink()
+//API Link for acessing the images
 
 //Returns Date object
 .getReleaseDate()
