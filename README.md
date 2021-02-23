@@ -17,9 +17,11 @@ npm install gog-product-wrapper
 ```
 
 ## 2. How to use
+### Example 1
 ```javascript
-const { getProductById } = require("gog-product-wrapper")
+const { getProductById } = require("ugog-product")
 
+    //Note that getProductById returns a promise
 getProductById(/*ID String here*/).then(function (product) {
     //product is GOGProduct class
     //GOGProduct respective methods here...
@@ -27,8 +29,9 @@ getProductById(/*ID String here*/).then(function (product) {
 
 ```
 
+### Example 2
 ```javascript
-//Note that getProductById returns a promise
+const { getProductById } = require("ugog-product")
 
 //Id for X3: Terran War Pack
 getProductById("1441039322").then(function (product) {
@@ -38,6 +41,7 @@ getProductById("1441039322").then(function (product) {
 ```
 
 ## 3. Other methods
+### Example 1
 
 ```javascript
 //Returns strings
