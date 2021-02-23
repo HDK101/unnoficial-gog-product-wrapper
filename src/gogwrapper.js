@@ -1,7 +1,7 @@
 const https = require("https");
 const { getRawJSON } = require("./getjsonurl");
 
-let gogProduct = class GOGProduct {
+let GOGProduct = class Product {
   /**
    * @constructor
    */
@@ -132,7 +132,7 @@ function getProductById(id) {
   const url = `https://www.gog.com/api/products/${id}`;
   return new Promise(function (resolve, reject) {
     getRawJSON(url).then(function (json) {
-      const product = new gogProduct(json);
+      const product = new GOGProduct(json);
       resolve(product);
     }).catch(function (err) {
       reject(err);
@@ -140,4 +140,4 @@ function getProductById(id) {
   });
 }
 
-module.exports = { getProductById, gogProduct };
+module.exports = { getProductById, GOGProduct };
