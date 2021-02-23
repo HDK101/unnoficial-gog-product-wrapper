@@ -46,10 +46,10 @@ getProductById("1441039322").then(function (product) {
 //Returns dictionaries
 .getAvailableLanguages()
 .getAvailableSystems()
-.getImages(advanced = false //by default )
+.getImages(advanced = false /*by default*/ )
 
 //Returns a promise with a dictionary about prices 
-.getPrices(countryCode = "US" //by default)
+.getPrices(countryCode = "US" /*by default*/ )
 
 //Return a promise with the ratings value
 getTotalRatingsValue()
