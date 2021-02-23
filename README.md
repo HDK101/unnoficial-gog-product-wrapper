@@ -18,6 +18,8 @@ npm install gog-product-wrapper
 
 ## 2. How to use
 ```javascript
+const { getProductById } = require("gog-product-wrapper")
+
 getProductById(/*ID String here*/).then(function (product) {
     //product is GOGProduct class
     //GOGProduct respective methods here...
