@@ -2,9 +2,11 @@
 ### An wrapper for GOG API for retrieving and managing products data
 
 
-### Warning! Changes to the official GOG API could make this library unusable!
+## Warning!
+1. Changes to the official GOG API could make this library unusable!
+2. Requests to the API are generally slow(run a test with Mocha and see it yourself)
 
-
+## Content
 1. How to install
 2. How to use
 3. Other methods
@@ -40,6 +42,10 @@ getProductById("1441039322").then(function (product) {
 .getProductCard()
 .getPurchaseLink()
 
+
+//API Link for acessing the images
+.getImagesAPILink()
+
 //Returns Date object
 .getReleaseDate()
 
@@ -47,16 +53,22 @@ getProductById("1441039322").then(function (product) {
 .getAvailableLanguages()
 .getAvailableSystems()
 .getImages(advanced = false /*by default*/ )
+/*
+if advanced = false, it returns a dictionary with the following links:
+    background, logo and icon
+if advanced = true, it returns:
+    background, logo, logo2x, sideBarIcon, sideBarIcon2x, menuNotificationAv, menuNotificationAv2
+*/
 
 //Returns a promise with a dictionary about prices 
 .getPrices(countryCode = "US" /*by default*/ )
 
-//Return a promise with the ratings value
-getTotalRatingsValue()
+//Return a promise with a dictionary about ratings
+.getRatings()
 
 ```
 
-# For Devs
+## For Devs wanting to fiddle with the source code
 
 1. Install required dependencies
 
@@ -64,7 +76,7 @@ getTotalRatingsValue()
 npm install
 ```
 
-2. Run test
+2. Run test(it will use MochaJS)
 
 ```
 npm run test
