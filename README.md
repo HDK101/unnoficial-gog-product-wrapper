@@ -51,3 +51,17 @@ getProductById("1441039322").then(function (product) {
 getTotalRatingsValue()
 
 ```
+
+#Dev use
+
+1. Install required dependencies
+
+```
+npm install
+```
+
+2. Run test
+
+```
+npm run test
+```
