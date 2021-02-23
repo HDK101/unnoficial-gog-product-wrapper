@@ -6,6 +6,10 @@
   "scripts": {
     "test": "mocha"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HDK101/unnoficial-gog-product-wrapper.git"
+  },
   "keywords": [
     "GOG",
     "json",
