@@ -1,4 +1,5 @@
 const https = require("https");
+const { getRawJSON } = require("./getjsonurl");
 
 let gogProduct = class GOGProduct {
   /**
@@ -43,72 +44,100 @@ let gogProduct = class GOGProduct {
    * @returns {Dictionary} a dictionary with links to images
    */
   getImages = (advanced = false) => {
-      if (advanced) {
-        return this.productJson.images;
-      }
-      else {
-          let images = {}
-          const { background, logo, icon } = this.productJson.images
-          images = Object.assign({ background, logo, icon })
-          return images
-      }
+    if (advanced) {
+      return this.productJson.images;
+    }
+    else {
+      let images = {}
+      const { background, logo, icon } = this.productJson.images
+      images = Object.assign({ background, logo, icon })
+      return images
+    }
   }
 
   /**
+ * Returns a promise with a dictionary related to prices
+ *
+ * @param {String} countryCode "US" by default
+ * @returns {Promise} A promise with a dictionary about pricing
+ */
+  getPricesDictionary = (countryCode) => {
+    const id = this.productJson.id;
+    const urlPrice = `https://api.gog.com/products/prices?ids=${id}&countryCode=${countryCode}`;
+    return new Promise(function (resolve, reject) {
+      getRawJSON(urlPrice).then(function (priceJSON) {
+        if (priceJSON._embedded.items.length > 0) {
+          const pricePath = priceJSON._embedded.items[0]._embedded.prices[0];
+
+          const { basePrice, finalPrice } = pricePath;
+
+          const basePriceNumber = parseInt(basePrice) / 100;
+          const finalPriceNumber = parseInt(finalPrice) / 100;
+          const discount = 1 - Math.round(finalPriceNumber / basePriceNumber * 100) / 100;
+          const currency = pricePath.currency.code;
+
+          const priceDictionary = {
+            basePrice: basePriceNumber,
+            finalPrice: finalPriceNumber,
+            discount: discount,
+            currency: currency,
+          };
+          resolve(priceDictionary);
+        }
+        else {
+          reject("Prices not found!");
+        }
+      }).catch(function (err) {
+        reject(err);
+      });
+    });
+  }
+
+  /**
+   * getPricesDictionary wrapped.
    * Returns a promise with a dictionary related to prices
    *
    * @param {String} countryCode "US" by default
    * @returns {Promise} A promise with a dictionary about pricing
    */
   getPrices = (countryCode = "US") => {
-    const id = this.productJson.id;
-    promise = new Promise(function (resolve, reject) {
-      const urlPrice = `https://api.gog.com/products/prices?ids=${id}&countryCode=${countryCode}`;
-      https
-        .get(urlPrice, function (res) {
-          res.on("data", function (chunk) {
-            const priceJson = JSON.parse(chunk);
-            const pricePath = priceJson._embedded.items[0]._embedded.prices[0];
-
-            const { basePrice, finalPrice } = pricePath;
-
-            const basePriceNumber = parseInt(basePrice) / 100;
-            const finalPriceNumber = parseInt(finalPrice) / 100;
-            const discount = finalPriceNumber / basePriceNumber;
-            const currency = pricePath.currency.code;
-
-            const priceDictionary = {
-              basePrice: basePriceNumber,
-              finalPrice: finalPriceNumber,
-              discount: discount,
-              currency: currency,
-            };
-            resolve(priceDictionary);
-          });
-        })
-        .on("error", function (err) {
-          reject(err);
-        });
+    return this.getPricesDictionary(countryCode).catch(function (err) {
+      console.error(err);
     });
-    return promise;
   };
+
+  /**
+   * Returns a promise with game ratings value(Between 0.0 stars and 5.0 stars)
+   *
+   * @returns {Promise} A promise with game ratings value
+   */
+  getTotalRatingsValue = () => {
+    const id = this.productJson.id;
+    const urlReviews = `https://reviews.gog.com/v1/products/${id}/averageRating`
+    return new Promise(function (resolve, reject) {
+      getRawJSON(urlReviews).then(function (totalRatings) {
+        resolve(totalRatings.value);
+      });
+    });
+  }
 };
 
+/**
+ * Returns a promise with a instanced class 'GogProduct'
+ *
+ * @param {String} id GOG product ID
+ * @returns {Promise} A promise with a instanced class 'GogProduct'
+ */
 function getProductById(id) {
   const url = `https://www.gog.com/api/products/${id}`;
-  promise = new Promise(function (resolve, reject) {
-    https
-      .get(url, function (res) {
-        res.on("data", function (chunk) {
-          const product = new gogProduct(JSON.parse(chunk));
-          resolve(product);
-        });
-      })
-      .on("error", function () {
-        reject(err);
-      });
+  return new Promise(function (resolve, reject) {
+    getRawJSON(url).then(function (json) {
+      const product = new gogProduct(json);
+      resolve(product);
+    }).catch(function (err) {
+      reject(err);
+    });
   });
-  return promise;
 }
 
-module.exports = { getProductById };
+module.exports = { getProductById, gogProduct };
