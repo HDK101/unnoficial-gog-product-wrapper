@@ -1,7 +1,7 @@
 {
   "name": "gogproductwrapper",
   "version": "0.0.1",
-  "description": "An wrapper for GOG API in retrivieing products",
+  "description": "An wrapper for GOG API for retrivieing and managing products data",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
