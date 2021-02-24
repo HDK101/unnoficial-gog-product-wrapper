@@ -40,7 +40,9 @@ let GOGProduct = class Product {
   getAvailableSystems = () => this.productJson.content_system_compatibility
 
   /**
-   * @returns {Dictionary} dictionary with DLCs
+   * @returns {Dictionary} array with DLCs
+   * in each object, it contains:
+   *  id, link, expanded_link
    */
   getDLCs = () => { 
     if (Object.keys(this.productJson.dlcs).length === 0)
