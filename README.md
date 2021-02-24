@@ -1,6 +1,8 @@
 # Unnoficial GOG Product Wrapper
 ### An wrapper for GOG API for retrieving and managing products data
 
+[![Build Status](https://travis-ci.com/HDK101/unnoficial-gog-product-wrapper.svg?branch=master)](https://travis-ci.com/HDK101/unnoficial-gog-product-wrapper)
+
 
 ## Warning!
 1. Changes to the official GOG API could make this library unusable!
