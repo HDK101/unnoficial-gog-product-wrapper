@@ -39,6 +39,17 @@ let GOGProduct = class Product {
    */
   getAvailableSystems = () => this.productJson.content_system_compatibility
 
+  /**
+   * @returns {Dictionary} dictionary with DLCs
+   */
+  getDLCs = () => { 
+    if (Object.keys(this.productJson.dlcs).length === 0)
+    {
+      return {};
+    }
+    return this.productJson.dlcs.products
+  }
+
   getImagesAPILink = () => {
     return "https://images.gog-statics.com/"
   }
