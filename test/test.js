@@ -5,7 +5,7 @@ describe("Getting a JSON of a GOG product by it ID and getting a class", functio
     this.timeout(10000);
     describe("#getProductById()", function () {
         it("should return a resolved promise", function () {
-            return getProductById("1449651388");
+            return getProductById("1441039322");
         });
     });
 });
@@ -13,7 +13,7 @@ describe("Getting a JSON of a GOG product by it ID and getting a class", functio
 describe("Functions of GOG Product", function () {
     var currentProduct = null
     before("Get GOG Product", function (done) {
-        getProductById("1449651388").then(function (product) {
+        getProductById("1441039322").then(function (product) {
             currentProduct = product;
             done();
         });
