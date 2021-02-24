@@ -3,6 +3,8 @@
 
 [![Build Status](https://travis-ci.com/HDK101/unnoficial-gog-product-wrapper.svg?branch=master)](https://travis-ci.com/HDK101/unnoficial-gog-product-wrapper)
 
+![NPM](https://img.shields.io/npm/l/ugog-product)
+
 
 ## Warning!
 1. Changes to the official GOG API could make this library unusable!
