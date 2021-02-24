@@ -1,6 +1,10 @@
 const assert = require("assert");
 const { getProductById, gogProduct } = require("../src/gogwrapper");
 
+/*
+The test uses id for X3: Terran War Pack
+*/
+
 describe("Getting a JSON of a GOG product by it ID and getting a class", function () {
     this.timeout(10000);
     describe("#getProductById()", function () {
