@@ -2,7 +2,7 @@
 ### An wrapper for GOG API for retrieving and managing products data
 
 [![Build Status](https://travis-ci.com/HDK101/unnoficial-gog-product-wrapper.svg?branch=master)](https://travis-ci.com/HDK101/unnoficial-gog-product-wrapper)![NPM](https://img.shields.io/npm/l/ugog-product)
-
+![npm](https://img.shields.io/npm/v/ugog-product)
 
 
 ## Warning!
