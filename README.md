@@ -90,3 +90,6 @@ npm install
 ```
 npm run test
 ```
+
+### Contributing
+ feel free to submit issues, request features, pull requests, etc.
