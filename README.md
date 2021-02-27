@@ -15,6 +15,8 @@
 3. Other GOGProduct class methods
 
 ## 1. How to install
+In your NPM project, type:
+
 ```
 npm install gog-product-wrapper
 ```
